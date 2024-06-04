@@ -1,0 +1,43 @@
+﻿<!--
+
+    Create Circle class. This class should contain radius, PI properties and also area operation that calc 
+    square of the circle and static operation MAX, takes 2 circles and returns bigger one.
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    static PI = Math.PI;
+
+    area() {
+        return Circle.PI * this.radius ** 2;
+    }
+
+    static max(circle1, circle2) {
+        return circle1.area() > circle2.area() ? circle1 : circle2;
+    }
+}
+
+        
+        var circle1 = new Circle(10);
+        
+        document.write("circle1 area = " + circle1.area());
+       
+        var circle2 = new Circle(15);
+       
+        var maxCircle = Circle.max(circle1, circle2);
+      
+        document.write("</br>max circle radius = " + maxCircle.radius); // 15
+    </script>
+</body>
+</html>
