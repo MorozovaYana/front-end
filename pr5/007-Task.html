@@ -1,0 +1,45 @@
+﻿<!--
+
+    Implement sum function. It takes array (or semi array object - length property exists) of integers and returns sum of them.
+    Need to properly handle null and undefined
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function sum(arr) {
+            
+            if (!(arr instanceof Array) && !(typeof arr === 'object' && arr !== null && 'length' in arr)) {
+                throw new Error("sum(): arg should be an array or array-like object");
+            }
+            
+            var total = 0;
+            for (var i = 0; i < arr.length; i++) {
+                
+                var num = parseFloat(arr[i]);
+                if (!isNaN(num)) {
+                    total += num;
+                }
+            }
+            return total;
+        }
+
+        var result = sum([1, 2, null, undefined, 3]);
+        alert(result); // output "6"
+
+        result = sum({ "0": 5, "1": 10, "2": 15, length: 3 });
+        alert(result); // output 30
+
+        try {
+            result = sum([1, 2, 3, "string"]);
+            alert(result);
+        } catch (error) {
+            alert(error.message);
+        }
+    </script>
+</body>
+</html>
